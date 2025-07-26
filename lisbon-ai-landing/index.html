@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Solutions Lisboa - Inteligência Artificial para Pequenas Empresas</title>
+    <meta name="description" content="Transforme o seu negócio em Lisboa com soluções de IA e automação personalizadas. Aumente a produtividade e reduza custos.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #4a5568;
+            padding-top: 1rem;
+            text-align: center;
+            color: #a0aec0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">AI Solutions Lisboa</div>
+            <ul class="nav-menu">
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#benefits">Benefícios</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Consulta Grátis</a>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transforme o Seu Negócio com IA</h1>
+                <p>Soluções de Inteligência Artificial e Automação personalizadas para pequenas empresas em Lisboa. Aumente a produtividade, reduza custos e acelere o crescimento.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Começar Agora</a>
+                    <a href="#services" class="btn-secondary">Ver Serviços</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Os Nossos Serviços</h2>
+                <p>Oferecemos soluções completas de IA e automação adaptadas às necessidades específicas do seu negócio em Lisboa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Chatbots Inteligentes</h3>
+                    <p>Automatize o atendimento ao cliente 24/7 com chatbots personalizados que respondem em português e compreendem as necessidades dos seus clientes lisboetas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Análise Preditiva</h3>
+                    <p>Tome decisões baseadas em dados com análises preditivas que ajudam a prever tendências de vendas, comportamento do cliente e oportunidades de mercado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Automação de Processos</h3>
+                    <p>Elimine tarefas repetitivas e melhore a eficiência com automação inteligente de processos administrativos e operacionais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Otimização SEO com IA</h3>
+                    <p>Melhore a sua presença online em Lisboa com estratégias de SEO potenciadas por inteligência artificial para atrair mais clientes locais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Marketing Automatizado</h3>
+                    <p>Campanhas de email marketing e redes sociais automatizadas e personalizadas para cada segmento dos seus clientes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Inteligente</h3>
+                    <p>Proteja o seu negócio com sistemas de segurança baseados em IA que detectam ameaças e previnem fraudes automaticamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por Que Escolher-nos?</h2>
+                <p>Especializamo-nos em soluções de IA para pequenas empresas em Lisboa, oferecendo tecnologia avançada com preços acessíveis</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Preços Acessíveis</h4>
+                        <p>Soluções de IA adaptadas ao orçamento de pequenas empresas, com planos flexíveis e ROI garantido.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Foco em Lisboa</h4>
+                        <p>Conhecemos o mercado lisboeta e adaptamos as soluções às especificidades locais e culturais.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Implementação Rápida</h4>
+                        <p>Resultados visíveis em 30 dias. Implementação ágil sem interromper as operações do seu negócio.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Suporte 24/7</h4>
+                        <p>Equipa de suporte técnico disponível sempre que precisar, em português e com conhecimento local.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Formação Incluída</h4>
+                        <p>Treino completo para a sua equipa dominar as novas ferramentas e maximizar os benefícios.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Garantia de Resultados</h4>
+                        <p>Comprometemo-nos com resultados mensuráveis ou devolvemos o investimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Especialistas em IA para Lisboa</h2>
+                    <p>Somos uma equipa de especialistas em inteligência artificial e automação, focados exclusivamente em ajudar pequenas empresas em Lisboa a crescer através da tecnologia.</p>
+                    <p>Com anos de experiência no mercado português e um profundo conhecimento das necessidades específicas das empresas lisboetas, oferecemos soluções que realmente funcionam.</p>
+                    <p>A nossa missão é democratizar o acesso à inteligência artificial, tornando-a acessível e rentável para todos os negócios, independentemente do tamanho.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <div class="stat-label">Empresas Transformadas</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">250%</span>
+                        <div class="stat-label">Aumento Médio de Produtividade</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30</span>
+                        <div class="stat-label">Dias para Ver Resultados</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Suporte Disponível</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Pronto para Transformar o Seu Negócio?</h2>
+            <p>Agende uma consulta gratuita e descubra como a IA pode revolucionar a sua empresa em Lisboa</p>
+            <div class="hero-buttons">
+                <a href="mailto:info@aisolutionslisboa.pt" class="btn-primary">Contactar Agora</a>
+                <a href="tel:+351910000000" class="btn-secondary">Ligar Grátis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI Solutions Lisboa</h3>
+                    <p>Transformamos pequenas empresas em Lisboa através de soluções inteligentes de IA e automação.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <p><a href="#services">Chatbots Inteligentes</a></p>
+                    <p><a href="#services">Análise Preditiva</a></p>
+                    <p><a href="#services">Automação de Processos</a></p>
+                    <p><a href="#services">Marketing Automatizado</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> info@aisolutionslisboa.pt</p>
+                    <p><i class="fas fa-phone"></i> +351 910 000 000</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lisboa, Portugal</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário</h3>
+                    <p>Segunda - Sexta: 9h - 18h</p>
+                    <p>Sábado: 9h - 13h</p>
+                    <p>Domingo: Fechado</p>
+                    <p>Suporte 24/7 disponível</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Solutions Lisboa. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and benefit items
+        document.querySelectorAll('.service-card, .benefit-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            // This would expand the mobile menu in a full implementation
+            alert('Menu mobile - Em uma implementação completa, isto abriria o menu de navegação');
+        });
+    </script>
+</body>
+</html>
